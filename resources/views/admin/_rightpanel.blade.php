@@ -99,7 +99,9 @@
 
                         <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
 
-                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        @auth
+                        <a class="nav-link" href="{{route('admin_logout')}}"><i class="fa fa-power-off"></i> Logout</a>
+                        @endauth
                     </div>
                 </div>
 
