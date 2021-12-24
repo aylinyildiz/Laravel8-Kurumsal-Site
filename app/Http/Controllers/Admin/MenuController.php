@@ -81,9 +81,11 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit(Menu $menu)
+    public function edit(Menu $menu, $id)
     {
-        //
+        $data=Menu::find($id);
+        $datalist= DB::table('menus')->get()->where('parentid',0);
+        return view('admin.menu_edit',['data'=>$data,'datalist'=>$datalist]);
     }
 
     /**
@@ -93,9 +95,16 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Menu $menu)
+    public function update(Request $request, Menu $menu, $id)
     {
-        //
+        $data=Menu::find($id);
+        $data->parentid=$request->input('parentid');
+        $data->title=$request->input('title');
+        $data->keywords=$request->input('keywords');
+        $data->description=$request->input('description');
+        $data->status=$request->input('status');
+        $data->save();
+        return redirect()->route('admin_menu');
     }
 
     /**
