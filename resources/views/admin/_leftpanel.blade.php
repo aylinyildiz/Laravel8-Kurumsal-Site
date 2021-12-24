@@ -19,7 +19,10 @@
                 <h3 class="menu-title"></h3><!-- /.menu-title -->
 
                 <li>
-                    <a href="{{route('admin_menu')}}"> <i class="menu-icon ti-email"></i>Menu </a>
+                    <a href="{{route('admin_menu')}}"> <i class="menu-icon fa fa-tasks"></i>Menu </a>
+                </li>
+                <li>
+                    <a href="{{route('admin_contents')}}"> <i class="menu-icon fa fa-tasks"></i>Contents </a>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>

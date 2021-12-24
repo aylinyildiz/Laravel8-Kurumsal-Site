@@ -26,7 +26,7 @@ Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class,'index'])
 Route::middleware('auth')->prefix('admin')->group(function (){
 
     Route::get('/',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name('admin_home');
-
+    //menu
     Route::get('/menu',[\App\Http\Controllers\Admin\MenuController::class,'index'])->name('admin_menu');
     Route::get('/menu/add',[\App\Http\Controllers\Admin\MenuController::class,'add'])->name('admin_menu_add');
     Route::post('/menu/create',[\App\Http\Controllers\Admin\MenuController::class,'create'])->name('admin_menu_create');
@@ -35,6 +35,17 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('/menu/delete/{id}',[\App\Http\Controllers\Admin\MenuController::class,'destroy'])->name('admin_menu_delete');
     Route::get('/menu/show',[\App\Http\Controllers\Admin\MenuController::class,'show'])->name('admin_menu_show');
 
+
+//Content
+    Route::prefix('content')->group(function (){
+        Route::get('/',[\App\Http\Controllers\Admin\ContentController::class,'index'])->name('admin_contents');
+        Route::get('create',[\App\Http\Controllers\Admin\ContentController::class,'create'])->name('admin_content_add');
+        Route::post('store',[\App\Http\Controllers\Admin\ContentController::class,'store'])->name('admin_content_store');
+        Route::get('edit/{id}',[\App\Http\Controllers\Admin\ContentController::class,'edit'])->name('admin_content_edit');
+        Route::post('update/{id}',[\App\Http\Controllers\Admin\ContentController::class,'update'])->name('admin_content_update');
+        Route::get('delete/{id}',[\App\Http\Controllers\Admin\ContentController::class,'destroy'])->name('admin_content_delete');
+        Route::get('show',[\App\Http\Controllers\Admin\ContentController::class,'show'])->name('admin_content_show');
+    });
 
 
 });
