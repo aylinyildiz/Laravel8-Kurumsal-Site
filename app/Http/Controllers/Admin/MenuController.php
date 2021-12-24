@@ -21,15 +21,37 @@ class MenuController extends Controller
         return view('admin.menu',['datalist'=>$datalist]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add()
     {
-        //
+        $datalist= DB::table('menus')->get()->where('parentid',0);
+        return view('admin.menu_add',['datalist'=>$datalist]);
     }
+
+    /**
+     * Insert data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+
+
+        DB::table('menus')->insert([
+            'parentid'=>$request->input('parentid'),
+            'title'=>$request->input('title'),
+            'keywords'=>$request->input('keywords'),
+            'description'=>$request->input('description'),
+            'status'=>$request->input('status')
+        ]);
+        return redirect()->route('admin_menu');
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -82,8 +104,9 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu)
+    public function destroy(Menu $menu, $id)
     {
-        //
+        DB::table('menus')->where('id', '=', $id)->delete();
+        return redirect()->route('admin_menu');
     }
 }

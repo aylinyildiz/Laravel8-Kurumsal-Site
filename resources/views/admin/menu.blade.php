@@ -27,7 +27,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Data Table</strong>
+                    <a href="{{route('admin_menu_add')}}" type="button" class="btn btn-outline-success btn-sm"><i class="fa fa-magic"></i>&nbsp; Add Menu</a>
                 </div>
                 <div class="card-body">
                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -49,7 +49,7 @@
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->status}}</td>
                                 <td>Edit</td>
-                                <td>Delete</td>
+                                <td><a href="{{route('admin_menu_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                             </tr>
                         @endforeach
                         </tbody>
