@@ -36,10 +36,11 @@
                             <div class="col col-md-3"><label  class=" form-control-label">Parent</label></div>
                             <div class="col-12 col-md-9">
                                 <select name="parentid" id="select" class="form-control">
-
                                     <option value="0">Main Menu</option>
                                     @foreach($datalist as $rs)
-                                        <option value="{{$rs->id}}" @if($rs->id == $data->parentid) selected="selected" @endif> {{$rs->title}}</option>
+                                        <option value="{{$rs->id}}" @if($rs->id == $data->parentid) selected="selected" @endif>
+                                            {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title)}}
+                                        </option>
                                     @endforeach
 
                                 </select>

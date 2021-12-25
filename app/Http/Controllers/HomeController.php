@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    public static function menuList()
+    {
+        return Menu::where('parentid', '=' ,0)->with('children')->get();
+    }
     //
     public function index()
     {

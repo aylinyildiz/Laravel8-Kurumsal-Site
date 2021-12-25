@@ -9,6 +9,21 @@ use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
+    protected $appends = [
+        'getParentsTree'
+    ];
+
+    public static function getParentsTree($menu, $title)
+    {
+        if($menu->parentid==0)
+        {
+            return $title;
+        }
+        $parent =Menu::find($menu->parentid);
+        $title=$parent->title . '>' . $title;
+        return MenuController::getParentsTree($parent, $title);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -84,7 +99,7 @@ class MenuController extends Controller
     public function edit(Menu $menu, $id)
     {
         $data=Menu::find($id);
-        $datalist= DB::table('menus')->get()->where('parentid',0);
+        $datalist= Menu::with('children')->get();
         return view('admin.menu_edit',['data'=>$data,'datalist'=>$datalist]);
     }
 
