@@ -34,7 +34,7 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Menu Parent</th>
+                            <th>Menu </th>
                             <th>Title</th>
                             <th>Detail</th>
                             <th>News</th>
@@ -50,7 +50,7 @@
                         @foreach($datalist as $rs)
                             <tr>
                                 <td>{{$rs->id}}</td>
-                                <td>{{$rs->menu_id}}</td>
+                                <td>{{$rs->menu->title}}</td>
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->detail}}</td>
                                 <td>{{$rs->news}}</td>

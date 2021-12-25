@@ -76,7 +76,7 @@
 
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Image</label></div>
-                            <div class="col-12 col-md-9"><input type="file"  name="image" class="form-control" value="{{$data->image}}"></div>
+                            <div class="col-12 col-md-9"><input type="file"  name="image" class="form-control" ></div>
                             @if($data->image)
                                 <img src="{{Storage::url($data->image)}}" height="60" alt="">
                             @endif

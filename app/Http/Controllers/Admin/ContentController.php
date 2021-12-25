@@ -102,7 +102,10 @@ class ContentController extends Controller
         $data->announcement=$request->input('announcement');
         $data->status=$request->input('status');
         $data->user_id=Auth::id();
-        $data->image=Storage::putFile('images', $request->file('image'));
+        if($request->file('image')!=null)
+        {
+            $data->image=Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_contents');
     }
