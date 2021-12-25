@@ -1,7 +1,7 @@
 <!-- Left Panel -->
 
 <aside id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
+    <nav class="navbar navbar-expand-sm navbar-default" style="background-color: #272c33; border-color: #272c33; ">
 
         <div class="navbar-header">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">

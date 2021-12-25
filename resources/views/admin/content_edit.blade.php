@@ -2,6 +2,16 @@
 
 @section('title', 'Edit Content')
 
+@section('javascript')
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+@endsection
+
+
 @section('content')
 
     <div class="breadcrumbs">
@@ -56,8 +66,24 @@
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Announcement</label></div>
-                            <div class="col-12 col-md-9"><input type="text"  name="announcement" class="form-control" value="{{$data->announcement}}"></div>
+                            <textarea id="summernote" name="announcement" >{{$data->announcement}}</textarea>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#summernote').summernote();
+                                });
+                            </script>
                         </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label  class=" form-control-label">Image</label></div>
+                            <div class="col-12 col-md-9"><input type="file"  name="image" class="form-control" value="{{$data->image}}"></div>
+                            @if($data->image)
+                                <img src="{{Storage::url($data->image)}}" height="60" alt="">
+                            @endif
+                        </div>
+
+
+
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Status</label></div>
                             <div class="col-12 col-md-9">
@@ -76,6 +102,7 @@
                                 <i class="fa fa-ban"></i> Reset
                             </button>
                         </div>
+                    </form>
                 </div>
             </div>
         </div> <!-- .content -->

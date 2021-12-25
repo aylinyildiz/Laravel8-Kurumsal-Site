@@ -8,6 +8,8 @@ use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ContentController extends Controller
 {
@@ -39,6 +41,7 @@ class ContentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // ekleme fonksiyonu
     public function store(Request $request)
     {
         $data= new Content;
@@ -51,6 +54,7 @@ class ContentController extends Controller
         $data->announcement=$request->input('announcement');
         $data->status=$request->input('status');
         $data->user_id=Auth::id();
+        $data->image=Storage::putFile('images', $request->file('image'));
         $data->save();
         return redirect()->route('admin_contents');
     }
@@ -98,6 +102,7 @@ class ContentController extends Controller
         $data->announcement=$request->input('announcement');
         $data->status=$request->input('status');
         $data->user_id=Auth::id();
+        $data->image=Storage::putFile('images', $request->file('image'));
         $data->save();
         return redirect()->route('admin_contents');
     }

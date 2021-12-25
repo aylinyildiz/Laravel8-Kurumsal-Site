@@ -40,6 +40,7 @@
                             <th>News</th>
                             <th>Announcement</th>
                             <th>Image</th>
+                            <th>Image Gallery</th>
                             <th>Status</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -54,7 +55,17 @@
                                 <td>{{$rs->detail}}</td>
                                 <td>{{$rs->news}}</td>
                                 <td>{{$rs->announcement}}</td>
-                                <td>{{$rs->image}}</td>
+                                <td>
+                                    @if ($rs->image)
+                                    <img src="{{Storage::url($rs->image)}}" height="30" alt="">
+
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{route('admin_image_add', ['content_id'=>$rs->id])}}" onclick="return !window.open(this.href, '','top=50 left=100 width=1100, height=700') ">
+                                        <i class="fa fa-picture-o" style="color: #0e6498"></i>
+                                    </a>
+                                </td>
                                 <td>{{$rs->status}}</td>
                                 <td><a href="{{route('admin_content_edit', ['id'=> $rs->id])}})}}" ><i class="fa fa-edit" style="color: #00cc00"></i></a> </td>
                                 <td><a href="{{route('admin_content_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete! Are you sure?')"><i class="fa fa-trash-o" style="color: #950B02"></i></a></td>
