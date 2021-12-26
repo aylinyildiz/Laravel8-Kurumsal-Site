@@ -17,7 +17,6 @@
                 <li><a href="{{route('myaccount')}}">User Profile</a></li>
             </ol>
         </div>
-
     </div>
 </section><!-- End Contact Section -->
 
