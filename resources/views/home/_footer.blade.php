@@ -1,3 +1,6 @@
+@php
+    $setting = \App\Http\Controllers\HomeController::getSetting()
+@endphp
 
 <!-- ======= Footer ======= -->
   <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
@@ -47,11 +50,11 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
-A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+                {{$setting->address}}<br><br>
+
+              <strong>Phone:</strong> {{$setting->phone}}<br>
+               <strong>Fax:</strong> {{$setting->fax}}<br>
+              <strong>Email:</strong> {{$setting->email}}<br>
             </p>
 
           </div>
@@ -60,10 +63,16 @@ A108 Adam Street <br>
             <h3>About Moderna</h3>
             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                @if($setting->twitter!=null)
+                    <a href="{{$setting->twitter}}" class="twitter" target="_blank"><i class="bx bxl-twitter" ></i></a>
+                @endif
+                @if($setting->facebook!=null)
+                    <a href="{{$setting->facebook}}" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+                @endif
+                @if($setting->instagram!=null)
+                    <a href="{{$setting->instagram}}" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+                @endif
+
             </div>
           </div>
 
@@ -73,14 +82,14 @@ A108 Adam Street <br>
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Moderna</span></strong>. All Rights Reserved
+        &copy; Designed by <strong><span>{{$setting->company}}</span></strong>
 </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+
       </div>
     </div>
   </footer><!-- End Footer -->

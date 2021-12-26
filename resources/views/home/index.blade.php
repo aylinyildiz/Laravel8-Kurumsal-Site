@@ -1,13 +1,11 @@
 @extends('layouts.home')
 
-@section('title', 'Laravel Kurumsal Site')
+@section('title', $setting->title)
 
-@section('description')
-    Kurumsal Site
-@endsection
+@section('description'){{$setting->description}} @endsection
 
 
-@section('keywords','kurumsal','site')
+@section('keywords', $setting->keywords)
 
 
 @section('content')

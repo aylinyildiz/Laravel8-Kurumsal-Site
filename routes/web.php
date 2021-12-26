@@ -17,10 +17,19 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/',[HomeController::class, 'index']);
+Route::get('/',[HomeController::class, 'index'])->name('home');
 
 //Admin
 Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminhome')->middleware();
+
+
+Route::get('/home', [HomeController::class,'index'])->name('homepage');
+Route::get('/aboutus', [HomeController::class,'aboutus'])->name('aboutus');
+Route::get('/references', [HomeController::class,'references'])->name('references');
+Route::get('/faq', [HomeController::class,'faq'])->name('faq');
+Route::get('/contact', [HomeController::class,'contact'])->name('contact');
+
+
 
                                   //hepsinin önüne admin yazmamak için prefix olarak ekledik.
 Route::middleware('auth')->prefix('admin')->group(function (){
@@ -65,7 +74,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 //login
 Route::get('/admin/login', [HomeController::class,'login'])->name('admin_login');
 Route::post('/admin/logincheck',[HomeController::class,'logincheck'])->name('admin_logincheck');
-Route::get('/admin/logout',[HomeController::class,'logout'])->name('admin_logout');
+Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
