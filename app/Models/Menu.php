@@ -14,14 +14,14 @@ class Menu extends Model
     ];
 
     //one to many
-    public function content()
+    public function contents()
     {
         return $this->hasMany(Content::class);
     }
 
     public function parent()
     {
-        return $this->belongsTo(Content::class, 'parentid');
+        return $this->belongsTo(Menu::class, 'parentid');
     }
 
     public function children()

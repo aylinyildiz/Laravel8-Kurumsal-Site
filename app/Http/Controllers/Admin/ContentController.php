@@ -31,7 +31,7 @@ class ContentController extends Controller
      */
     public function create()
     {
-        $datalist=Content::with('children')->get();
+        $datalist=Menu::with('children')->get();
         return view('admin.content_add', ['datalist'=>$datalist]);
     }
 

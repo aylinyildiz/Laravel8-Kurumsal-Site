@@ -2,7 +2,7 @@
     $parentMenus = \App\Http\Controllers\HomeController::menuList()
 @endphp
 
-                                                        {{--anasayfa dışındaki header rengi ayarlandı--}}
+{{--anasayfa dışındaki header rengi ayarlandı--}}
 <header id="header" class="fixed-top header-transparent" @if(!isset($page)) style="background-color: #1e4356" @endif>
     <div class="container">
 
@@ -23,20 +23,20 @@
                 @endforeach
 
                 @auth
-                <li class="drop-down"><a href="#">{{Auth::user()->name}}</a>
-                    <ul>
-                        <li><a href="{{route('myaccount')}}">Hesabım</a></li>
-                        <li><a href="{{route('logout')}}">Logout</a></li>
-                    </ul>
-                </li>
+                    <li class="drop-down"><a href="#">{{Auth::user()->name}}</a>
+                        <ul>
+                            <li><a href="{{route('myaccount')}}">Hesabım</a></li>
+                            <li><a href="{{route('logout')}}">Logout</a></li>
+                        </ul>
+                    </li>
                 @endauth
                 @guest
-                  <li class="drop-down"><a href="#">Giriş</a>
-                    <ul>
-                        <li><a href="{{route('login')}}">Login</a></li>
-                        <li><a href="{{route('register')}}">Register</a></li>
-                    </ul>
-                  </li>
+                    <li class="drop-down"><a href="#">Giriş</a>
+                        <ul>
+                            <li><a href="{{route('login')}}">Login</a></li>
+                            <li><a href="{{route('register')}}">Register</a></li>
+                        </ul>
+                    </li>
                 @endguest
 
             </ul>

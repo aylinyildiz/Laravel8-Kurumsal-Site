@@ -15,11 +15,11 @@ class MenuController extends Controller
 
     public static function getParentsTree($menu, $title)
     {
-        if($menu->parentid==0)
+        if($menu->parentid == 0)
         {
             return $title;
         }
-        $parent =Menu::find($menu->parentid);
+        $parent = Menu::find($menu->parentid);
         $title=$parent->title . '>' . $title;
         return MenuController::getParentsTree($parent, $title);
     }

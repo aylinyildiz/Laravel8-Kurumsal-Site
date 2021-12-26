@@ -9,6 +9,7 @@ class Content extends Model
 {
     use HasFactory;
 
+
     public function menu()
     {
         return $this->belongsTo(Menu::class);
