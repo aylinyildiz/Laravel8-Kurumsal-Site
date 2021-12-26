@@ -1,3 +1,4 @@
+{{--kullanılmıyor--}}
 <div class="sidebar">
     <h3 class="sidebar-title">Categories</h3>
     <div class="sidebar-item categories">

@@ -32,7 +32,7 @@ class MenuController extends Controller
     public function index()
     {
         //
-        $datalist= DB::table('menus')->get();
+        $datalist= Menu::with('children')->get();
         return view('admin.menu',['datalist'=>$datalist]);
     }
 
@@ -44,7 +44,7 @@ class MenuController extends Controller
      */
     public function add()
     {
-        $datalist= DB::table('menus')->get()->where('parentid',0);
+        $datalist= Menu::with('children')->get();;
         return view('admin.menu_add',['datalist'=>$datalist]);
     }
 

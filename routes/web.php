@@ -70,17 +70,17 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::post('setting/update/',[\App\Http\Controllers\Admin\SettingController::class,'update'])->name('admin_setting_update');
 });
 
-Route::middleware('auth')->prefix('myaccount')->namespace('user')->group(function () {
+Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
     Route::get('/' , [UserController::class,'index'])->name('myaccount');
 });
 
 
 // hata verdiği için yapamadım. ******Tekrar bak********
-/*Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
+Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
     Route::get('/profile' , [UserController::class,'index'])->name('userprofile');
 });
 
-*/
+
 
 //login
 Route::get('/admin/login', [HomeController::class,'login'])->name('admin_login');

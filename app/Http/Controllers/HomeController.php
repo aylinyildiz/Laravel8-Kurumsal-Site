@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public static function menuList()
     {
-        return Menu::where('parentid', '=' ,0)->with('children')->get();
+        return Menu::where('parentid', '=', 0)->with('children')->get();
     }
 
     public static function getSetting()
@@ -23,23 +23,30 @@ class HomeController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        return view('home.index', ['setting'=>$setting, 'page'=>'home']);
+        return view('home.index', ['setting' => $setting, 'page' => 'home']);
     }
 
     public function aboutus()
     {
-        return view('home.aboutus');
+        $setting = Setting::first();
+        return view('home.about', ['setting' => $setting]);
     }
+
     public function faq()
     {
         return view('home.aboutus');
-    }public function references()
-{
-    return view('home.aboutus');
-}
+    }
+
+    public function references()
+    {
+        $setting = Setting::first();
+        return view('home.references',['setting'=>$setting]);
+    }
+
     public function contact()
     {
-        return view('home.aboutus');
+        $setting = Setting::first();
+        return view('home.contact',['setting'=>$setting]);
     }
 
     public function login()
@@ -47,21 +54,19 @@ class HomeController extends Controller
         return view('admin.login');
     }
 
-    public function logincheck (Request $request)
+    public function logincheck(Request $request)
     {
-        if($request->isMethod('post'))
-        {
-            $credentials = $request->only('email','password');
-            if(Auth::attempt($credentials)) {
+        if ($request->isMethod('post')) {
+            $credentials = $request->only('email', 'password');
+            if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
 
                 return redirect()->intended('admin');
             }
             return back()->withErrors([
-                'email'=>'The provided credentials do not match our records',
+                'email' => 'The provided credentials do not match our records',
             ]);
-        }
-        else{
+        } else {
             return view('admin.login');
         }
     }
