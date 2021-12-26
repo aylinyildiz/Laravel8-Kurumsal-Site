@@ -1,4 +1,6 @@
 <!-- Slide 1 -->
+<section id="hero" class="d-flex justify-cntent-center align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
 <div class="carousel-item active">
     <div class="carousel-container">
         <h2 class="animated fadeInDown">Welcome to <span>Moderna</span></h2>
@@ -34,3 +36,5 @@
     <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
 </a>
+    </div>
+</section>

@@ -45,12 +45,10 @@
 
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex justify-cntent-center align-items-center">
-    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
-    @include('home._slider')
-    </div>
 
-</section>
+@section('slider')
+@show
+
 
 @section('content')
     <main id="main">

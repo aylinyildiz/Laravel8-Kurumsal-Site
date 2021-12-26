@@ -2,9 +2,8 @@
     $parentMenus = \App\Http\Controllers\HomeController::menuList()
 @endphp
 
-
-
-<header id="header" class="fixed-top header-transparent">
+                                                        {{--anasayfa dışındaki header rengi ayarlandı--}}
+<header id="header" class="fixed-top header-transparent" @if(!isset($page)) style="background-color: #1e4356" @endif>
     <div class="container">
 
         <div class="logo float-left">
@@ -26,6 +25,7 @@
                 @auth
                 <li class="drop-down"><a href="#">{{Auth::user()->name}}</a>
                     <ul>
+                        <li><a href="{{route('myaccount')}}">Hesabım</a></li>
                         <li><a href="{{route('logout')}}">Logout</a></li>
                     </ul>
                 </li>
