@@ -1,15 +1,15 @@
 <ul>
-@foreach($children as $submenu)
+    @foreach($children as $submenu)
 
-       @if(count($submenu->children))
-        <li class="drop-down">
-          {{$submenu->title}}
+        @if(count($submenu->children))
+            <li class="drop-down">
+                {{$submenu->title}}
 
-            @include('home.menutree', ['$children'=>$submenu->$children])
-        </li>
+                @include('home.menutree', ['$children'=>$submenu->$children])
+            </li>
         @else
-        <li><a href="#">{{$submenu->title}}</a></li>
-           @endif
+            <li><a href="{{route('menucontent', ['id'=>$submenu->id])}}">{{$submenu->title}}</a></li>
+        @endif
 
-@endforeach
-    </ul>
+    @endforeach
+</ul>

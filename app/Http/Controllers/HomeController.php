@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\Menu;
 use App\Models\Message;
 use App\Models\Setting;
@@ -25,7 +26,17 @@ class HomeController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        return view('home.index', ['setting' => $setting, 'page' => 'home']);
+        $slider = Content::select('title', 'image')->limit(4)->get();
+        $announcement= Content::select('id','title', 'image',)->limit(4)->inRandomOrder()->get();
+        $news= Content::select('id','title', 'image',)->limit(4)->get();
+
+
+        $data = ['setting' => $setting,
+                 'slider' => $slider,
+                 'announcement' => $announcement,
+                 'news' => 'news'];
+
+        return view('home.index', $data);
     }
 
     public function aboutus()
@@ -33,6 +44,15 @@ class HomeController extends Controller
         $setting = Setting::first();
         return view('home.about', ['setting' => $setting]);
     }
+
+    public function menucontent($id)
+    {
+        $datalist = Content::where('menu_id',$id)->get();
+        $data = Menu::find($id);
+        return view('home.menu_content', ['data'=>$data,'datalist'=>$datalist]);
+    }
+
+
 
     public function faq()
     {

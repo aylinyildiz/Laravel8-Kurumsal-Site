@@ -24,6 +24,8 @@ Route::get('/',[HomeController::class, 'index'])->name('home');
 //Admin
 Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminhome')->middleware();
 
+Route::get('menucontent/{id}', [HomeController::class,'menucontent'])->name('menucontent');
+
 
 Route::get('/home', [HomeController::class,'index'])->name('homepage');
 Route::get('/aboutus', [HomeController::class,'aboutus'])->name('aboutus');
