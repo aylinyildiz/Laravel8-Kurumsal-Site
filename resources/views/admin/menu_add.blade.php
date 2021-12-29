@@ -45,7 +45,7 @@
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Title</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="title" class="form-control"><small class="help-block form-text">Please enter your email</small></div>
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="title" class="form-control"></div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Keywords</label></div>

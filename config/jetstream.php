@@ -62,8 +62,4 @@ return [
 
     'profile_photo_disk' => 'public',
 
-    'features'=> [
-        Features::profilePhotos(),
-    ]
-
 ];

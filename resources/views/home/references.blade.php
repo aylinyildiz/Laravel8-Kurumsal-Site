@@ -8,7 +8,7 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>User Profile</h2>
+                <h2></h2>
                 <ol>
                     <li><a href="{{route('home')}}">Home</a></li>
                     <li><a href="{{route('myaccount')}}">References</a></li>

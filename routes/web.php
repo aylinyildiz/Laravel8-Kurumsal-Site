@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -25,6 +26,10 @@ Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminhome')->middleware();
 
 Route::get('menucontent/{id}', [HomeController::class,'menucontent'])->name('menucontent');
+Route::get('homedetail/{id}', [HomeController::class,'homedetail'])->name('homedetail');
+
+//search
+Route::post('getcontent', [HomeController::class,'getcontent'])->name('getcontent');
 
 
 Route::get('/home', [HomeController::class,'index'])->name('homepage');
@@ -50,7 +55,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('/menu/show',[\App\Http\Controllers\Admin\MenuController::class,'show'])->name('admin_menu_show');
 
 
-//Content
+    //Content
     Route::prefix('content')->group(function (){
         Route::get('/',[\App\Http\Controllers\Admin\ContentController::class,'index'])->name('admin_contents');
         Route::get('create',[\App\Http\Controllers\Admin\ContentController::class,'create'])->name('admin_content_add');
@@ -83,6 +88,19 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('setting',[\App\Http\Controllers\Admin\SettingController::class,'index'])->name('admin_setting');
     Route::post('setting/update/',[\App\Http\Controllers\Admin\SettingController::class,'update'])->name('admin_setting_update');
 });
+
+
+//Faq
+Route::prefix('faq')->group(function (){
+    Route::get('/',[FaqController::class,'index'])->name('admin_faq');
+    Route::get('create',[FaqController::class,'create'])->name('admin_faq_add');
+    Route::post('store',[FaqController::class,'store'])->name('admin_faq_store');
+    Route::get('edit/{id}',[FaqController::class,'edit'])->name('admin_faq_edit');
+    Route::post('update/{id}',[FaqController::class,'update'])->name('admin_faq_update');
+    Route::get('delete/{id}',[FaqController::class,'destroy'])->name('admin_faq_delete');
+    Route::get('show',[FaqController::class,'show'])->name('admin_faq_show');
+});
+
 
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
     Route::get('/' , [UserController::class,'index'])->name('myaccount');

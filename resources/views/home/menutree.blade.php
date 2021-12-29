@@ -4,7 +4,6 @@
         @if(count($submenu->children))
             <li class="drop-down">
                 {{$submenu->title}}
-
                 @include('home.menutree', ['$children'=>$submenu->$children])
             </li>
         @else

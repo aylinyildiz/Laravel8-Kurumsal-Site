@@ -153,7 +153,7 @@
                                         <div class="row form-group">
                                             <div class="col col-md-3"><label  class=" form-control-label">references</label></div>
                                             <div class="col-12 col-md-9">
-                                                <textarea name="references" id="references" cols="30" rows="10">{{$data->references}}</textarea>
+                                                <textarea name="references" id="references" cols="30" rows="10">{{ $data->references}}</textarea>
                                             </div>
 
                                             <script>
