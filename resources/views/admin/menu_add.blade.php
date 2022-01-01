@@ -59,8 +59,8 @@
                             <div class="col col-md-3"><label  class=" form-control-label">Status</label></div>
                             <div class="col-12 col-md-9">
                                 <select name="status" id="select" class="form-control">
-                                    <option value="0" selected="selected">False</option>
-                                    <option value="1">True</option>
+                                    <option selected="selected">False</option>
+                                    <option>True</option>
                                 </select>
                             </div>
                         </div>

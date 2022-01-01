@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Add Content')
+@section('title', 'Add FAQ')
 
 @section('javascript')
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>Add Content</h1>
+                    <h1>Add FAQ</h1>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="page-header float-right">
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
-                        <li class="active">Add Content</li>
+                        <li class="active">Add FAQ</li>
                     </ol>
                 </div>
             </div>
@@ -39,34 +39,20 @@
                     <strong>Basic Form</strong> Elements
                 </div>
                 <div class="card-body card-block">
-                    <form action="{{route('admin_content_store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="{{route('admin_faq_store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         @csrf {{--dışardan birinin bu formu post etmesini engeller--}}
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Parent</label></div>
-                            <div class="col-12 col-md-9">
-                                <select name="menu_id" id="select" class="form-control">
-                                    @foreach($datalist as $rs)
-                                        <option value="{{$rs->id}}">{{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title)}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Title</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="title" class="form-control"></div>
+                            <div class="col col-md-3"><label  class=" form-control-label">Position</label></div>
+                            <div class="col-12 col-md-9"><input type="number" value="0" id="title" name="position" class="form-control"></div>
                         </div>
 
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Detail</label></div>
-                            <div class="col-12 col-md-9"><input type="text" name="detail" class="form-control"></div>
+                            <div class="col col-md-3"><label  class=" form-control-label">Question</label></div>
+                            <div class="col-12 col-md-9"><input type="text" name="question" class="form-control"></div>
                         </div>
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">News</label></div>
-                            <div class="col-12 col-md-9"><input type="text"  name="news" class="form-control"></div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Announcement</label></div>
-                            <textarea id="summernote" name="announcement" ></textarea>
+                            <div class="col col-md-3"><label  class=" form-control-label">Answer</label></div>
+                            <textarea id="summernote" name="Answer" ></textarea>
                             <script>
                                 $(document).ready(function() {
                                     $('#summernote').summernote();
@@ -76,23 +62,18 @@
                         </div>
 
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Image</label></div>
-                            <div class="col-12 col-md-9"><input type="file" id="text-input" name="image" class="form-control"></div>
-                        </div>
-
-                        <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Status</label></div>
                             <div class="col-12 col-md-9">
                                 <select name="status" id="select" class="form-control">
-                                    <option value="0" selected="selected">False</option>
-                                    <option value="1">True</option>
+                                    <option selected="selected">False</option>
+                                    <option>True</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Add Content
+                                <i class="fa fa-dot-circle-o"></i> Add
                             </button>
                             <button type="reset" class="btn btn-danger btn-sm">
                                 <i class="fa fa-ban"></i> Reset

@@ -8,7 +8,7 @@ use App\Models\User;
 use Livewire\Component;
 
 
-class Search extends Component
+class search extends Component
 {
     public $search = '';
 

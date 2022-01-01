@@ -9,19 +9,17 @@
         <h1 class="text-light"><a href="{{route('home')}}"><span>Kurumsal Site</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
     </div>
 
-    {{--  <div>
-          <form action="{{route('getcontent')}}" method="post">
-              @csrf
-              @livewire('search')
-              <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-          </form>
-          @livewireScripts
-      </div>
-  --}}
+
+
+
+
     <nav class="nav-menu float-right d-none d-lg-block mr-5">
         <ul>
+
+
             <li><a href="">Anasayfa</a></li>
             <li class="drop-down"><a href="">Birimler</a>
                 <ul>
@@ -35,9 +33,9 @@
                 </ul>
             </li>
             <li><a href="">Galeri</a></li>
-            <li><a href="">Hakkımızda</a></li>
-            <li><a href="">Referanslar</a></li>
-            <li><a href="">İletişim</a></li>
+            <li><a href="{{route('aboutus')}}">Hakkımızda</a></li>
+            <li><a href="{{route('references')}}">Referanslar</a></li>
+            <li><a href="{{route('contact')}}">İletişim</a></li>
 
 
             @auth
@@ -56,6 +54,14 @@
                     </ul>
                 </li>
             @endguest
+            <li>
+                <form action="{{route('getcontent')}}" method="post" class="d-flex ml-5">
+                    @csrf
+                    @livewire('search')
+                    <button type="submit"class="btn" style="background-color: #29566B; color: white;  ">Search</button>
+                </form>
+                @livewireScripts
+            </li>
 
         </ul>
     </nav><!-- .nav-menu -->

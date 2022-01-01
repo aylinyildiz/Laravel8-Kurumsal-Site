@@ -29,7 +29,9 @@ Route::get('menucontent/{id}', [HomeController::class,'menucontent'])->name('men
 Route::get('homedetail/{id}', [HomeController::class,'homedetail'])->name('homedetail');
 
 //search
+Route::get('contentlist/{search}', [HomeController::class, 'contentlist'])->name('contentlist');
 Route::post('getcontent', [HomeController::class,'getcontent'])->name('getcontent');
+Route::get('content/{id}', [HomeController::class,'content'])->name('content');
 
 
 Route::get('/home', [HomeController::class,'index'])->name('homepage');

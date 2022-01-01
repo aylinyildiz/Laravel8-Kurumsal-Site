@@ -47,10 +47,29 @@ class HomeController extends Controller
         return view('home.homedetail', ['data'=>$data, 'datalist'=>$datalist]);
     }
 
+    public function content($id)
+    {
+        $data = Content::find($id);
+        $datalist = Image::where('content_id', $id)->get();
+        return view('home.content_detail', ['data'=>$data, 'datalist' => $datalist]);
+    }
+
     public function getcontent(Request $request)
     {
-        $data = Content::where('title',$request->input('search'))->first();
-        return redirect()->route('content',['id'=>$data->id]);
+        $search = $request->input('search');
+        $count = Content::where('title',$request->input('search'))->first();
+        if($count==1)
+        {
+            $data = Content::where('title','like', '%'.$search.'%')->get()->count;
+            return redirect()->route('content',['id'=>$data->id]);
+        }
+        return redirect()->route('contentlist',['search' => $search]);
+    }
+
+    public function contentlist($search)
+    {
+        $datalist = Content::where('title', 'like', '%'.$search.'%')->get();
+        return view('home.search_content', ['search' => $search, 'datalist' => $datalist]);
     }
 
 

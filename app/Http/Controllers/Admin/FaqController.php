@@ -26,7 +26,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.fad_add');
     }
 
     /**
@@ -37,7 +37,13 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data= new Faq;
+        $data->position=$request->input('position');
+        $data->question=$request->input('question');
+        $data->answer=$request->input('answer');
+        $data->status=$request->input('status');
+        $data->save();
+        return redirect()->route('admin_faq');
     }
 
     /**
