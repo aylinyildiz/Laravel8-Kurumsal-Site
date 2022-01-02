@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Comment;
 use App\Models\Content;
 use App\Models\Image;
 use App\Models\Menu;
@@ -39,6 +40,12 @@ class HomeController extends Controller
 
         return view('home.index', $data);
     }
+    public function contentdetail($id)
+    {
+        $data = Content::find($id);
+        $datalist = Image::where('content_id', $id)->get();
+        return view('home.content_detail', ['data'=>$data, 'datalist' => $datalist]);
+    }
 
     public function homedetail($id)
     {
@@ -47,20 +54,36 @@ class HomeController extends Controller
         return view('home.homedetail', ['data'=>$data, 'datalist'=>$datalist]);
     }
 
+    //comment
+/*    public static function countcomment($id)
+    {
+        return Comment::where('comment_id', $id)->count();
+    }
+    public static function avgcomment($id)
+    {
+        return Comment::where('comment_id', $id)->average('rate');
+    }*/
+
+
+
+    //arama
     public function content($id)
     {
         $data = Content::find($id);
         $datalist = Image::where('content_id', $id)->get();
-        return view('home.content_detail', ['data'=>$data, 'datalist' => $datalist]);
+        $comments = Comment::where('content_id', $id)->get();
+        return view('home.content_detail', ['data'=>$data, 'datalist' => $datalist, 'comments' => $comments]);
     }
+
 
     public function getcontent(Request $request)
     {
         $search = $request->input('search');
-        $count = Content::where('title',$request->input('search'))->first();
+        $count = Content::where('title','like', '%'.$search.'%')->get()->count();
+
         if($count==1)
         {
-            $data = Content::where('title','like', '%'.$search.'%')->get()->count;
+            $data = Content::where('title',$request->input('search'))->first();
             return redirect()->route('content',['id'=>$data->id]);
         }
         return redirect()->route('contentlist',['search' => $search]);

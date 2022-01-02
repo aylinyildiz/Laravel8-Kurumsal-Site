@@ -13,9 +13,6 @@
     </div>
 
 
-
-
-
     <nav class="nav-menu float-right d-none d-lg-block mr-5">
         <ul>
 
@@ -55,12 +52,14 @@
                 </li>
             @endguest
             <li>
-                <form action="{{route('getcontent')}}" method="post" class="d-flex ml-5">
+                <form action="{{route('getcontent')}}" method="post" class="d-flex ml-3">
                     @csrf
                     @livewire('search')
-                    <button type="submit"class="btn" style="background-color: #29566B; color: white;  ">Search</button>
+                    <button type="submit" class="btn" style="background-color: #29566B; color: white;  ">Search</button>
                 </form>
-                @livewireScripts
+
+                    @livewireScripts
+
             </li>
 
         </ul>

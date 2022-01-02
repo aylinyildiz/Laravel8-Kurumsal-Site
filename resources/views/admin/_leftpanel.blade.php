@@ -31,8 +31,12 @@
                     <a href="{{route('admin_message')}}"> <i class="menu-icon fa fa-envelope-o"></i>Contact Messages </a>
                 </li>
                 <li>
+                    <a href="{{route('admin_comment')}}"> <i class="menu-icon fa fa-comments"></i>Comments</a>
+                </li>
+                <li>
                     <a href="{{route('admin_faq')}}"> <i class="menu-icon fa fa-question-circle"></i>FAQ</a>
                 </li>
+
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
                     <ul class="sub-menu children dropdown-menu">

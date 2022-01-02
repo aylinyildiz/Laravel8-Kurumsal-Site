@@ -1,6 +1,6 @@
 <div>
     <input wire:model="search" name="search" type="text" class="form-control me-2"
-           list="mylist" placeholder="Ara..." style="width: 300px"/>
+           list="mylist" placeholder="Ara..." style="width: 200px"/>
     @if(!empty($query))
         <datalist id="mylist">
             @foreach($datalist as $rs)

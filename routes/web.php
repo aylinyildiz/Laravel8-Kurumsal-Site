@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\HomeController;
@@ -27,6 +28,7 @@ Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class,'index'])
 
 Route::get('menucontent/{id}', [HomeController::class,'menucontent'])->name('menucontent');
 Route::get('homedetail/{id}', [HomeController::class,'homedetail'])->name('homedetail');
+Route::get('contentdetail/{id}', [HomeController::class,'contentdetail'])->name('contentdetail');
 
 //search
 Route::get('contentlist/{search}', [HomeController::class, 'contentlist'])->name('contentlist');
@@ -69,6 +71,16 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     });
 
 
+    //comment
+    Route::prefix('comment')->group(function (){
+        Route::get('/', [CommentController::class,'index'])->name('admin_comment');
+        Route::post('update/{id}', [CommentController::class,'update'])->name('admin_comment_update');
+        Route::get('delete/{id}', [CommentController::class,'destroy'])->name('admin_comment_delete');
+        Route::get('show/{id}', [CommentController::class,'show'])->name('admin_comment_show');
+
+    });
+
+
     //Message
     Route::prefix('messages')->group(function (){
         Route::get('/',[MessageController::class,'index'])->name('admin_message');
@@ -106,7 +118,12 @@ Route::prefix('faq')->group(function (){
 
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
     Route::get('/' , [UserController::class,'index'])->name('myaccount');
+    Route::get('/mycomments', [UserController::class, 'comments'])->name('mycomments');
+    Route::get('/destroymycomments/{id}',[CommentController::class,'destroymycomments'])->name('admin_comment_delete');
+
 });
+
+
 
 
 // hata verdiği için yapamadım. ******Tekrar bak********
@@ -125,3 +142,5 @@ Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
