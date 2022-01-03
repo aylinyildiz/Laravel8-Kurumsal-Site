@@ -33,7 +33,8 @@
                     @endphp--}}
                     <div class="blog-comments">
                         <h4 class="comments-count">Comments</h4>
-                        @foreach($comments as $rs)
+
+                       @foreach($comments as $rs)
                         <div id="comment-1" class="comment clearfix">
                             <img src="assets/img/comments-1.jpg" class="comment-img  float-left" alt="">
                             <h5><a href="">{{$rs->user->name}}</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
@@ -52,7 +53,7 @@
                             </p>
                         </div><!-- End comment #1 -->
                         @endforeach
-
+                        @livewireScripts
                         <div class="reply-form">
                            <h4>Write your review</h4>
                             @livewire('comment', ['id' => $data->id])

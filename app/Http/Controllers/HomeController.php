@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Livewire\Comment;
+
 use App\Models\Content;
 use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Message;
+use App\Models\Comment;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,8 @@ class HomeController extends Controller
     {
         $data = Content::find($id);
         $datalist = Image::where('content_id', $id)->get();
-        return view('home.content_detail', ['data'=>$data, 'datalist' => $datalist]);
+        $comments = Comment::where('content_id', $id)->get();
+        return view('home.content_detail', ['data'=>$data, 'datalist' => $datalist, 'comments' => $comments]);
     }
 
     public function homedetail($id)

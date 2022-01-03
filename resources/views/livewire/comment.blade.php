@@ -29,6 +29,7 @@
                 </div>
             </div>
         </div>
+
         @auth
             <input type="submit" class="btn btn-primary" value="Save"/>
         @else
