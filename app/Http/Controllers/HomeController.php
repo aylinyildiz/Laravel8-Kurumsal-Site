@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Content;
+use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Message;
@@ -115,7 +116,8 @@ class HomeController extends Controller
 
     public function faq()
     {
-        return view('home.aboutus');
+        $datalist = Faq::all()->sortBy('id');
+        return view('home.faq', ['datalist'=>$datalist]);
     }
 
     public function references()

@@ -32,6 +32,7 @@
             <li><a href="">Galeri</a></li>
             <li><a href="{{route('aboutus')}}">Hakkımızda</a></li>
             <li><a href="{{route('references')}}">Referanslar</a></li>
+            <li><a href="{{route('faq')}}">Sık Sorulan Sorular</a></li>
             <li><a href="{{route('contact')}}">İletişim</a></li>
 
 

@@ -28,13 +28,13 @@
             <div class="card">
                 <div class="card-header">
                     <a href="{{route('admin_faq_add')}}" type="button" class="btn btn-outline-success btn-sm"><i class="fa fa-magic"></i>&nbsp; Add Faq</a>
+                    @include('home.message')
                 </div>
                 <div class="card-body">
                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Position </th>
                              <th>Question</th>
                             <th>Answer</th>
                             <th>Status</th>
@@ -45,10 +45,9 @@
                         <tbody>
                         @foreach($datalist as $rs)
                             <tr>
-
-                                <td>{{$rs->position}}</td>
+                                <td>{{$rs->id}}</td>
                                 <td>{{$rs->question}}</td>
-                                <td>{{$rs->answer}}</td>
+                                <td>{!!$rs->answer!!}</td>
                                 <td>{{$rs->status}}</td>
                                 <td><a href="{{route('admin_faq_edit', ['id'=> $rs->id])}})}}" ><i class="fa fa-edit" style="color: #00cc00"></i></a> </td>
                                 <td><a href="{{route('admin_faq_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete! Are you sure?')"><i class="fa fa-trash-o" style="color: #950B02"></i></a></td>

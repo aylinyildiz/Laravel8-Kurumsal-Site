@@ -40,62 +40,33 @@
                     <strong>Basic Form</strong> Elements
                 </div>
                 <div class="card-body card-block">
-                    <form action="{{route('admin_content_update', ['id'=>$data->id])}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="{{route('admin_faq_update', ['id'=>$data->id])}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         @csrf {{--dışardan birinin bu formu post etmesini engeller--}}
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Parent</label></div>
-                            <div class="col-12 col-md-9">
-                                <select name="menu_id" id="select" class="form-control">
-                                    @foreach($datalist as $rs)
-                                        <option value="{{$rs->id}}"  @if($rs->id == $data->parentid) selected="selected" @endif>
-                                            {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title)}}
-                                        </option>
-                                    @endforeach
-                                </select>
+                            <div class="col col-md-3"><label  class=" form-control-label">Question</label></div>
+                            <div class="col-12 col-md-9"><input type="text" name="question" class="form-control" value="{{$data->question}}"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label  class=" form-control-label">Answer</label></div>
+                            <div class="col-md-8">
+                                <textarea id="summernote" name="answer">{{$data->answer}}</textarea>
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#summernote').summernote();
+                                    });
+                                </script>
                             </div>
                         </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Title</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="title" class="form-control" value="{{$data->title}}"></div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Detail</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="detail" class="form-control" value="{{$data->detail}}"></div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">News</label></div>
-                            <div class="col-12 col-md-9"><input type="text"  name="news" class="form-control" value="{{$data->news}}"></div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Announcement</label></div>
-                            <textarea id="summernote" name="announcement" >{{$data->announcement}}</textarea>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#summernote').summernote();
-                                });
-                            </script>
-                        </div>
-
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Image</label></div>
-                            <div class="col-12 col-md-9"><input type="file"  name="image" class="form-control" ></div>
-                            @if($data->image)
-                                <img src="{{Storage::url($data->image)}}" height="60" alt="">
-                            @endif
-                        </div>
-
-
 
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Status</label></div>
                             <div class="col-12 col-md-9">
-                                <select name="status" id="select" class="form-control" value="{{$data->status}}">
-                                    <option value="0" selected="selected">False</option>
-                                    <option value="1">True</option>
+                                <select name="status" id="select" class="form-control">
+                                    <option selected="selected">False</option>
+                                    <option>True</option>
                                 </select>
                             </div>
                         </div>
-
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary btn-sm">
                                 <i class="fa fa-dot-circle-o"></i> Update Content

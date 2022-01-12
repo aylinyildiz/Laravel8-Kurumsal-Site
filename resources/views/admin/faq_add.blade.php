@@ -42,23 +42,19 @@
                     <form action="{{route('admin_faq_store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         @csrf {{--dışardan birinin bu formu post etmesini engeller--}}
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Position</label></div>
-                            <div class="col-12 col-md-9"><input type="number" value="0" id="title" name="position" class="form-control"></div>
-                        </div>
-
-                        <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Question</label></div>
                             <div class="col-12 col-md-9"><input type="text" name="question" class="form-control"></div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Answer</label></div>
-                            <textarea id="summernote" name="Answer" ></textarea>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#summernote').summernote();
-                                });
-                            </script>
-
+                            <div class="col-md-8">
+                                <textarea id="summernote" name="answer" ></textarea>
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#summernote').summernote();
+                                    });
+                                </script>
+                            </div>
                         </div>
 
                         <div class="row form-group">
