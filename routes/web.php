@@ -118,8 +118,8 @@ Route::prefix('faq')->group(function (){
 
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
     Route::get('/' , [UserController::class,'index'])->name('myaccount');
-    Route::get('/mycomments', [UserController::class, 'comments'])->name('mycomments');
-    Route::get('/destroymycomments/{id}',[CommentController::class,'destroymycomments'])->name('admin_comment_delete');
+    Route::get('/mycomments', [UserController::class, 'mycomments'])->name('mycomments');
+    Route::get('/destroy/{id}',[CommentController::class,'destroy'])->name('admin_comment_delete');
 
 });
 

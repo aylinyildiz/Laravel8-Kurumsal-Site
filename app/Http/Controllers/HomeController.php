@@ -57,14 +57,14 @@ class HomeController extends Controller
     }
 
     //comment
-/*    public static function countcomment($id)
+  public static function countcomment($id)
     {
-        return Comment::where('comment_id', $id)->count();
+        return Comment::where('content_id', $id)->count();
     }
     public static function avgcomment($id)
     {
-        return Comment::where('comment_id', $id)->average('rate');
-    }*/
+        return Comment::where('content_id', $id)->average('rate');
+    }
 
 
 

@@ -1,7 +1,28 @@
 @extends('layouts.home')
+
+
+@section('title', $data->title . " " )
+
+
 <main id="main">
     <!-- ======= Blog Section ======= -->
-    <section class="blog" >
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>{!! $data->title !!}</h2>
+
+                <ol>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">{!! $data->title !!}</a></li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Blog Section -->
+
+    <!-- ======= Blog Section ======= -->
+    <section class="blog">
         <div class="container">
 
             <div class="row">
@@ -9,56 +30,78 @@
                 <div class="col-lg-8 entries">
 
                     <article class="entry entry-single">
+                        <div class="entry-img">
+                            <img src="{{Storage::url($data->image)}}" alt="" class="img-fluid">
+                        </div>
 
+                        <h2 class="entry-title">
+                            <a href="blog-single.html">{!! $data->title !!}</a>
+                        </h2>
 
+                        <div class="entry-meta">
+                            <ul>
+                                @php
+                                    $avgcomment =  \App\Http\Controllers\HomeController::avgcomment($data->id);
+                                    $countcomment = \App\Http\Controllers\HomeController::countcomment($data->id);
+                                @endphp
+                                <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">{!! $data->title !!}</a></li>
+                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{$data->created_at}}</time></a></li>
+                                <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">{{$countcomment}} Comments</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="entry-content">
+                            <p>
+                            {!! $data->announcement !!}
+                            </p>
+                        </div>
+
+                        <div class="entry-footer clearfix">
+
+                            <div class="float-right share">
+                                <a href="" title="Share on Twitter"><i class="icofont-twitter"></i></a>
+                                <a href="" title="Share on Facebook"><i class="icofont-facebook"></i></a>
+                                <a href="" title="Share on Instagram"><i class="icofont-instagram"></i></a>
+                            </div>
+
+                        </div>
 
                     </article><!-- End blog entry -->
 
-              {{--      <div class="blog-author clearfix">
-                        <img src="assets/img/blog-author.jpg" class="rounded-circle float-left" alt="">
-                        <h4>Jane Smith</h4>
-                        <div class="social-links">
-                            <a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
-                            <a href="https://facebook.com/#"><i class="icofont-facebook"></i></a>
-                            <a href="https://instagram.com/#"><i class="icofont-instagram"></i></a>
-                        </div>
-                        <p>
-                            Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat
-                            voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
-                        </p>
-                    </div><!-- End blog author bio -->--}}
-                {{--    @php
-                        $avgcomment =  \App\Http\Controllers\HomeController::avgcomment($data->id);
-                        $countcomment = \App\Http\Controllers\HomeController::countcomment($data->id);
-                    @endphp--}}
+
                     <div class="blog-comments">
-                        <h4 class="comments-count">Comments</h4>
 
-                       @foreach($comments as $rs)
+                        <h4 class="comments-count">{{$countcomment}} Comments</h4>
+                        @foreach($comments as $rs)
+
                         <div id="comment-1" class="comment clearfix">
-                            <img src="assets/img/comments-1.jpg" class="comment-img  float-left" alt="">
-                            <h5><a href="">{{$rs->user->name}}</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                            <time datetime="2020-01-01">{{$rs->created_at}}</time>
-
-
-                            <div>
-                                <i class="fa fa-star @if($rs->rate<1) -☆ empty @endif"></i>
-                                <i class="fa fa-star @if($rs->rate<2) -☆ empty @endif"></i>
-                                <i class="fa fa-star @if($rs->rate<3) -☆ empty @endif"></i>
-                                <i class="fa fa-star @if($rs->rate<4) -☆ empty @endif"></i>
-                                <i class="fa fa-star @if($rs->rate<5) -☆ empty @endif"></i>
+                            <img src="{{asset('assets')}}/img/user.png" class="comment-img  float-left" alt="">
+                            <h5><a href="">{{$rs->user->name}}</a> </h5>
+                            <div style="display: flex; justify-content: space-between">
+                                <div>
+                                    <time datetime="2020-01-01">{{$rs->created_at}}</time>
+                                </div>
+                              <div>
+                                  @for ($i = $rs->rate; $i >= 1; $i--)
+                                      <i class="fa fa-star text-warning" >☆</i>
+                                  @endfor
+                                  @for ($i = 5-$rs->rate; $i >= 1; $i--)
+                                      <i class="fa fa-star ">☆</i>
+                                  @endfor
+                              </div>
                             </div>
+
                             <p>
-                               {{$rs->comment}}
+                                {{$rs->comment}}
                             </p>
+
                         </div><!-- End comment #1 -->
                         @endforeach
                         @livewireScripts
                         <div class="reply-form">
-                           <h4>Write your review</h4>
+                            <h4>Write your comment</h4>
                             @livewire('comment', ['id' => $data->id])
                         </div>
-
                     </div><!-- End blog comments -->
 
                 </div><!-- End blog entries list -->
@@ -151,4 +194,5 @@
     </section><!-- End Blog Section -->
 
 </main><!-- End #main -->
+
 

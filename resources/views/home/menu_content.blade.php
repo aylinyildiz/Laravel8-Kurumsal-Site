@@ -19,7 +19,7 @@
         </div>
     </section><!-- End Contact Section -->
 
-    <section class="blog"  data-aos-duration="500">
+    <section class="blog">
         <div class="container">
 
             <div class="row">
@@ -36,33 +36,29 @@
                             <h2 class="entry-title">
                                 <a href="blog-single.html">{{$rs->title}}</a>
                             </h2>
-
+                            @php
+                                $avgcomment =  \App\Http\Controllers\HomeController::avgcomment($data->id);
+                                $countcomment = \App\Http\Controllers\HomeController::countcomment($data->id);
+                            @endphp
                             <div class="entry-meta">
                                 <ul>
                                     <li class="d-flex align-items-center"><i class="icofont-user"></i> <a
-                                            href="blog-single.html">John
-                                            Doe</a></li>
+                                            href="">{{$rs->title}}</a></li>
                                     <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a
-                                            href="blog-single.html">
-                                            <time datetime="2020-01-01">Jan 1, 2020</time>
+                                            href="">
+                                            <time datetime="2020-01-01">{{$rs->created_at}}</time>
                                         </a></li>
                                     <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a
-                                            href="blog-single.html">12
-                                            Comments</a></li>
+                                            href="">{{$countcomment}} Comments</a></li>
                                 </ul>
                             </div>
 
                             <div class="entry-content">
                                 <p>
-                                    Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi
-                                    praesentium. Aliquam et
-                                    laboriosam eius aut nostrum quidem aliquid dicta.
-                                    Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta.
-                                    Est cum et quod quos
-                                    aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                                    {{$rs->detail}}
                                 </p>
                                 <div class="read-more">
-                                    <a href="{{route('contentdetail', ['id' => $data->id])}}">Read More</a>
+                                    <a href="{{route('contentdetail', ['id' => $rs->id])}}">Read More</a>
                                 </div>
                             </div>
 
@@ -108,35 +104,15 @@
 
                         <h3 class="sidebar-title">Recent Posts</h3>
                         <div class="sidebar-item recent-posts">
-                            <div class="post-item clearfix">
-                                <img src="{{asset('assets')}}/assets/img/recent-posts-1.jpg" alt="">
-                                <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
+                            @foreach($datalist as $rs)
+                                <div class="post-item clearfix">
+                                    <img src="{{Storage::url($rs->image)}}" alt="">
+                                    <h4><a href="{{route('contentdetail', ['id' => $rs->id])}}">{{$rs->title}}</a></h4>
+                                    <time datetime="2020-01-01">{{$rs->created_at}}</time>
+                                </div>
+                            @endforeach
 
-                            <div class="post-item clearfix">
-                                <img src="{{asset('assets')}}/assets/img/recent-posts-2.jpg" alt="">
-                                <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
 
-                            <div class="post-item clearfix">
-                                <img src="{{asset('assets')}}/assets/img/recent-posts-3.jpg" alt="">
-                                <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-
-                            <div class="post-item clearfix">
-                                <img src="{{asset('assets')}}/assets/img/recent-posts-4.jpg" alt="">
-                                <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-
-                            <div class="post-item clearfix">
-                                <img src="{{asset('assets')}}/assets/img/recent-posts-5.jpg" alt="">
-                                <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
                         </div><!-- End sidebar recent posts-->
 
                         <h3 class="sidebar-title">Tags</h3>
