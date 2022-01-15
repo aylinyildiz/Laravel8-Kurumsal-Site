@@ -20,16 +20,14 @@
     </section><!-- End Contact Section -->
 
     <!-- ======= About Section ======= -->
-    <section class="about" >
-        <div class="container">
+    <section class="about">
+        <div class="container" style="background-color: white">
+            <div class="row pt-3 pb-3" style="display: flex; justify-content: center;">
+                <img src="{{ Storage::url($data->image)}}" style="width: 600px; height: 400px" class="img-fluid" alt="">
+            </div>
+            <div class="row  pl-5 pr-5 pb-5">
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <img src="{{ Storage::url($data->image)}}" style="width: 600px; height: 400px" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0">
-                  {!! $data->announcement !!}
-                </div>
+                {!! $data->news !!}
             </div>
 
         </div>

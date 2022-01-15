@@ -442,10 +442,9 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   top: 0;
   width: 130%;
   height: 95%;
-  background: linear-gradient(to right, rgba(30, 67, 86, 0.8), rgba(30, 67, 86, 0.6)), url("../img/hero-bg.jpg") center top no-repeat;
-  z-index: 0;
-  border-radius: 0 0 50% 50%;
-  transform: translateX(-50%) rotate(0deg);
+  /*background: linear-gradient(to right, rgba(30, 67, 86, 0.8), rgba(30, 67, 86, 0.6)), url("../img/hero-bg.jpg") center top no-repeat;*/
+
+
 }
 
 #hero::before {
@@ -455,11 +454,9 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   top: 0;
   width: 130%;
   height: 96%;
-  background: #68A4C4;
   opacity: 0.3;
   z-index: 0;
-  border-radius: 0 0 50% 50%;
-  transform: translateX(-50%) translateY(18px) rotate(2deg);
+
 }
 
 #hero .carousel-container {
@@ -483,8 +480,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 
 #hero p {
   width: 80%;
-  -webkit-animation-delay: 0.4s;
-  animation-delay: 0.4s;
+
   margin: 0 auto 30px auto;
   color: #fff;
 }

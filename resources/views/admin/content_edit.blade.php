@@ -64,14 +64,28 @@
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">News</label></div>
-                            <div class="col-12 col-md-9"><input type="text"  name="news" class="form-control" value="{{$data->news}}"></div>
+                            <textarea id="news" name="news" >{{$data->news}}</textarea>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#news').summernote();
+                                });
+                            </script>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Announcement</label></div>
-                            <textarea id="summernote" name="announcement" >{{$data->announcement}}</textarea>
+                            <textarea id="announcement" name="announcement" >{{$data->announcement}}</textarea>
                             <script>
                                 $(document).ready(function() {
-                                    $('#summernote').summernote();
+                                    $('#announcement').summernote();
+                                });
+                            </script>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label  class=" form-control-label">Activity</label></div>
+                            <textarea id="activity" name="activity" >{{$data->activity}}</textarea>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#activity').summernote();
                                 });
                             </script>
                         </div>

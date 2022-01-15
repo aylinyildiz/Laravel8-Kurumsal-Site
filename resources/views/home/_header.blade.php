@@ -15,8 +15,6 @@
 
     <nav class="nav-menu float-right d-none d-lg-block mr-5">
         <ul>
-
-
             <li><a href="">Anasayfa</a></li>
             <li class="drop-down"><a href="">Birimler</a>
                 <ul>
@@ -41,6 +39,7 @@
                     <ul>
                         <li><a href="{{route('myaccount')}}">Hesabım</a></li>
                         <li><a href="{{route('mycomments')}}">Yorumlarım</a></li>
+                        <li><a href="{{route('user_contents')}}">Content</a></li>
                         <li><a href="{{route('logout')}}">Logout</a></li>
                     </ul>
                 </li>

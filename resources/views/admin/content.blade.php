@@ -39,6 +39,7 @@
                             <th>Detail</th>
                             <th>News</th>
                             <th>Announcement</th>
+                            <th>Activity</th>
                             <th>Image</th>
                             <th>Image Gallery</th>
                             <th>Status</th>
@@ -55,8 +56,9 @@
                                 </td>
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->detail}}</td>
-                                <td>{{$rs->news}}</td>
-                                <td>{{$rs->announcement}}</td>
+                                <td>{{Str::limit($rs->news,50)}}</td>
+                                <td>{{Str::limit($rs->announcement,50)}}</td>
+                                <td>{{Str::limit($rs->activity,50)}}</td>
                                 <td>
                                     @if ($rs->image)
                                     <img src="{{Storage::url($rs->image)}}" height="30" alt="">

@@ -60,16 +60,35 @@
                             <div class="col col-md-3"><label  class=" form-control-label">Detail</label></div>
                             <div class="col-12 col-md-9"><input type="text" name="detail" class="form-control"></div>
                         </div>
+
+
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">News</label></div>
-                            <div class="col-12 col-md-9"><input type="text"  name="news" class="form-control"></div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Announcement</label></div>
-                            <textarea id="summernote" name="announcement" ></textarea>
+                            <textarea id="news" name="news" ></textarea>
                             <script>
                                 $(document).ready(function() {
-                                    $('#summernote').summernote();
+                                    $('#news').summernote();
+                                });
+                            </script>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label  class=" form-control-label">Announcement</label></div>
+                            <textarea id="announcement" name="announcement" ></textarea>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#announcement').summernote();
+                                });
+                            </script>
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label  class=" form-control-label">Activity</label></div>
+                            <textarea id="activity" name="activity"></textarea>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#activity').summernote();
                                 });
                             </script>
 
