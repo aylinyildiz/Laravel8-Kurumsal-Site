@@ -39,7 +39,7 @@
                     <ul>
                         <li><a href="{{route('myaccount')}}">Hesabım</a></li>
                         <li><a href="{{route('mycomments')}}">Yorumlarım</a></li>
-                        <li><a href="{{route('user_contents')}}">Content</a></li>
+                        <li><a href="{{route('user_contents')}}">İçeriklerim</a></li>
                         <li><a href="{{route('logout')}}">Logout</a></li>
                     </ul>
                 </li>

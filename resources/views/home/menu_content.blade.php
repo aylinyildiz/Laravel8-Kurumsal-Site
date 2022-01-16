@@ -102,6 +102,7 @@
 
                         </div><!-- End sidebar categories-->
 
+
                         <h3 class="sidebar-title">Recent Posts</h3>
                         <div class="sidebar-item recent-posts">
                             @foreach($datalist as $rs)

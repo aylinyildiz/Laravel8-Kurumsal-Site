@@ -104,7 +104,7 @@ class ContentController extends Controller
             $data->image=Storage::putFile('images', $request->file('image'));
         }
         $data->save();
-        return redirect()->route('user_contents');
+        return redirect()->route('user_contents')->with('success','İçerik eklendi.');
     }
 
     /**

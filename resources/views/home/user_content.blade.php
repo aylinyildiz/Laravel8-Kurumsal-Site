@@ -6,10 +6,10 @@
     <section class="breadcrumbs mt-10" style="margin-top: 70px; ">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Content</h2>
+                <h2>İçeriklerim</h2>
                 <ol>
                     <li><a href="{{route('home')}}">Home</a></li>
-                    <li><a href="">User Content</a></li>
+                    <li><a href="">İçeriklerim</a></li>
                 </ol>
             </div>
         </div>
@@ -18,8 +18,9 @@
     <div class="content mt-3">
         <div class="col-md-12">
             <div class="container">
-                <div class="mb-2">
+                <div class="mb-3">
                     <a href="{{route('user_content_add')}}" type="button" class="btn btn-success btn-sm"><i class="fa fa-magic"></i>&nbsp; Add Content</a>
+                @include('home.message')
                 </div>
                 <div>
                     <table class="table table-striped mb-5 " style="border: 1px solid #dee2e6; ">
@@ -47,14 +48,13 @@
                                     {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu, $rs->menu->title)}}
                                 </td>
                                 <td>{{$rs->title}}</td>
-                                <td>{{Str::limit($rs->detail,50)}}</td>
-                                <td>{{Str::limit($rs->news,50)}}</td>
+                                <td>{{Str::limit($rs->detail,30)}}</td>
+                                <td>{{Str::limit($rs->news,30)}}</td>
                                 <td>{{Str::limit($rs->announcement,50)}}</td>
                                 <td>{{Str::limit($rs->activity,50)}}</td>
                                 <td>
                                     @if ($rs->image)
                                         <img src="{{Storage::url($rs->image)}}" height="30" alt="">
-
                                     @endif
                                 </td>
                                 <td>

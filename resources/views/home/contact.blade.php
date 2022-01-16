@@ -8,10 +8,10 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Contact</h2>
+                <h2>İletişim</h2>
                 <ol>
                     <li><a href="{{route('home')}}">Home</a></li>
-                    <li><a href="{{route('myaccount')}}">Contact</a></li>
+                    <li><a href="{{route('myaccount')}}">İletişim</a></li>
                 </ol>
             </div>
         </div>

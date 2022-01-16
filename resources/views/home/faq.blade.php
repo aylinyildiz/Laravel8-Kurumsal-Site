@@ -8,10 +8,10 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>FAQ</h2>
+                <h2>SSS</h2>
                 <ol>
                     <li><a href="{{route('home')}}">Home</a></li>
-                    <li><a href="{{route('faq')}}">Frequently asked question</a></li>
+                    <li><a href="{{route('faq')}}">Sık Sorulan Sorular</a></li>
                 </ol>
             </div>
         </div>
