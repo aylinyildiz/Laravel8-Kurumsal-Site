@@ -35,11 +35,19 @@
 
 
             @auth
-                <li class="drop-down"><a href="#">{{Auth::user()->name}}</a>
+                <li class="drop-down"><a href="#">{{Auth::user()->name}}
+                    {{Auth::user()->roles->pluck('name')}}
+                    </a>
                     <ul>
                         <li><a href="{{route('myaccount')}}">Hesabım</a></li>
                         <li><a href="{{route('mycomments')}}">Yorumlarım</a></li>
                         <li><a href="{{route('user_contents')}}">İçeriklerim</a></li>
+                        @php
+                            $userRoles = Auth::user()->roles->pluck('name');
+                        @endphp
+                        @if (!$userRoles->contains('admin')){
+                        <li><a href="{{route('admin_home')}}" target="_blank">Admin Panel</a></li>
+                        @endif
                         <li><a href="{{route('logout')}}">Logout</a></li>
                     </ul>
                 </li>

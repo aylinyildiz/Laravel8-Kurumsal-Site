@@ -41,7 +41,9 @@
                     <img class="align-content" src="{{asset('assets')}}/admin/images/logo.png" alt="">
                 </a>
             </div>
+
             <div class="login-form">
+                @include('home.message')
                 <form action="{{ route('admin_logincheck') }}" method="post">
                     @csrf  {{-- güvenlik kontrolü. bu web siteden form almayı sağlar--}}
                     <div class="form-group">
