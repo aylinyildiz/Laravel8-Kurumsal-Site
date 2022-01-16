@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Menu List')
+@section('title', 'User List')
 
 @section('content')
 
@@ -8,7 +8,7 @@
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>Menu</h1>
+                    <h1>Users</h1>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <div class="page-header float-right">
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
-                        <li class="active">Home/Menu</li>
+                        <li class="active">Home/Users</li>
                     </ol>
                 </div>
             </div>
@@ -27,41 +27,44 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-
+                    <a href="{{route('admin_content_add')}}" type="button" class="btn btn-outline-success btn-sm"><i class="fa fa-magic"></i>&nbsp; Add Content</a>
                 </div>
                 <div class="card-body">
                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                         <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Content</th>
-                                <th>Comment</th>
-                                <th>Rate</th>
-                                <th>Status</th>
-                                <th>Date</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
+                        <tr>
+                            <th>Id</th>
+                            <th></th>
+                            <th>Name </th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Roles</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
                         </thead>
                         <tbody>
                         @foreach($datalist as $rs)
                             <tr>
                                 <td>{{$rs->id}}</td>
                                 <td>
-                                    <a style="color: #117a8b" href="{{route('admin_user_show', ['id'=> $rs->user->id])}})}}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100, height=700')">
-                                        {{$rs->user->name}}
-                                    </a>
+                                    @if($rs->profile_photo_path)
+                                        <img src="{{Storage::url($rs->profile_photo_path)}}" height="50" style="border-radius: 10px" alt="">
+                                    @endif
                                 </td>
-                                <td><a href="{{route('content', ['id'=> $rs->content->id])}}" target="_blank">
-                                        {{$rs->content->title}}
-                                    </a></td>
-                                <td>{{$rs->comment}}</td>
-                                <td>{{$rs->rate}}</td>
-                                <td>{{$rs->status}}</td>
-                                <td>{{$rs->created_at}}</td>
-                                <td><a href="{{route('admin_comment_show', ['id'=> $rs->id])}})}}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100, height=700')" ><i class="fa fa-edit" style="color: #00cc00"></i></a> </td>
-                                <td><a href="{{route('admin_comment_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete! Are you sure?')"><i class="fa fa-trash-o" style="color: #950B02"></i></a></td>
+                                <td>{{$rs->name}}</td>
+                                <td>{{$rs->email}}</td>
+                                <td>{{$rs->phone}}</td>
+                                <td>{{$rs->address}}</td>
+                                <td>@foreach($rs->roles as $row)
+                                        {{$row->name}}
+                                    @endforeach
+                                    <a href="{{route('admin_user_roles', ['id'=>$rs->id])}}" onclick="return !window.open(this.href, '','top=100 left=300 width=800, height=600')">
+                                    <i class="fa fa-plus-circle" style="color: #0e6498"></i></a>
+                                </td>
+                                <td><a href="{{route('admin_user_edit', ['id'=> $rs->id])}})}}" ><i class="fa fa-edit" style="color: #00cc00"></i></a> </td>
+                                <td><a href="{{route('admin_user_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete! Are you sure?')"><i class="fa fa-trash-o" style="color: #950B02"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -91,5 +94,3 @@
 
 
 @endsection
-
-

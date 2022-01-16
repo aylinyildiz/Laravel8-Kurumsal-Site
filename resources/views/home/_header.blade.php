@@ -35,9 +35,7 @@
 
 
             @auth
-                <li class="drop-down"><a href="#">{{Auth::user()->name}}
-                    {{Auth::user()->roles->pluck('name')}}
-                    </a>
+                <li class="drop-down"><a href="#">{{Auth::user()->name}}</a>
                     <ul>
                         <li><a href="{{route('myaccount')}}">Hesabım</a></li>
                         <li><a href="{{route('mycomments')}}">Yorumlarım</a></li>

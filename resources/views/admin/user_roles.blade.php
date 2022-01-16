@@ -18,13 +18,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Mesaj Detayı </strong>
+                    <strong>User Roles</strong>
                     @include('home.message')
                 </div>
                 <div class="card-body card-block">
-                    <form role="form" action="{{route('admin_message_update', ['id'=>$data->id])}}" method="post"
-                          enctype="multipart/form-data">
-                        @csrf
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <tr>
                                 <th>Id</th>
@@ -39,25 +36,36 @@
                                 <td>{{$data->email}}</td>
                             </tr>
                             <tr>
-                                <th>Subject</th>
-                                <td>{{$data->subject}}</td>
-                            </tr>
-                            <tr>
-                                <th>Message</th>
-                                <td>{{$data->message}}</td>
-                            </tr>
-                            <tr>
-                                <th>Admin Notu</th>
-                                <th><textarea name="note" id="note" cols="100" rows="10">{{$data->note}}</textarea></th>
-                            </tr>
-                            <tr>
-                                <td></td>
+                                <th>Roles</th>
                                 <td>
-                                    <button class="btn btn-primary" type="submit">Güncelle</button>
+                                    <table>
+                                        @foreach($data->roles as $row)
+                                            <tr>
+                                                <td>{{$row->name}}</td>
+                                                <td>
+                                                    <a href="{{route('admin_user_role_delete', ['userid' => $data->id, 'roleid'=>$row->id])}}" onclick="return !window.open(this.href, '','top=50 left=100 width=800, height=600')"></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Add Role</th>
+                                <td>
+                                    <form action="{{route('admin_user_roles_add', ['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <select name="roleid">
+                                            @foreach($datalist as $rs)
+                                                <option value="{{$rs->id}}">{{$rs->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <button type="submit" class="btn btn-primary">Add Role</button>
+                                    </form>
                                 </td>
                             </tr>
                         </table>
-                    </form>
 
                 </div>
             </div>

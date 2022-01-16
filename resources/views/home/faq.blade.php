@@ -19,11 +19,11 @@
 
     <!-- ======= Contact Section ======= -->
     <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-        <div class="container">
+        <div class="container p-5" style="background-color: white">
             @foreach($datalist as $rs)
                 <h2>{{$rs->question}}</h2>
                 <p> {!! $rs->answer !!}</p>
-                <hr>
+                <hr class="mt-2">
                 @endforeach
 
         </div>
