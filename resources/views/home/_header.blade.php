@@ -6,7 +6,7 @@
 <header id="header" class="fixed-top header-transparent" @if(!isset($page)) style="background-color: #1e4356;" @endif>
 
     <div class="logo float-left">
-        <h1 class="text-light"><a href="{{route('home')}}"><span>Kurumsal Site</span></a></h1>
+        <h1 class="text-light pl-5"><a href="{{route('home')}}"><span>Universite</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -27,7 +27,6 @@
                     @endforeach
                 </ul>
             </li>
-            <li><a href="">Galeri</a></li>
             <li><a href="{{route('aboutus')}}">Hakkımızda</a></li>
             <li><a href="{{route('references')}}">Referanslar</a></li>
             <li><a href="{{route('faq')}}">Sık Sorulan Sorular</a></li>

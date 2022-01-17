@@ -65,30 +65,27 @@
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">News</label></div>
                             <textarea id="news" name="news" >{{$data->news}}</textarea>
+
                             <script>
-                                $(document).ready(function() {
-                                    $('#news').summernote();
-                                });
+                                CKEDITOR.replace( 'news' );
                             </script>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Announcement</label></div>
                             <textarea id="announcement" name="announcement" >{{$data->announcement}}</textarea>
                             <script>
-                                $(document).ready(function() {
-                                    $('#announcement').summernote();
-                                });
+                                CKEDITOR.replace( 'announcement' );
                             </script>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Activity</label></div>
-                            <textarea id="activity" name="activity" >{{$data->activity}}</textarea>
+                            <textarea id="activity" name="activity">{{$data->activity}}</textarea>
                             <script>
-                                $(document).ready(function() {
-                                    $('#activity').summernote();
-                                });
+                                CKEDITOR.replace( 'activity' );
                             </script>
                         </div>
+
+
 
                         <div class="row form-group">
                             <div class="col col-md-3"><label  class=" form-control-label">Image</label></div>

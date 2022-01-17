@@ -105,7 +105,7 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Kullanıcıya Rol Eklendi.');
     }
 
-    public function user_roles_delete(Request $request,User $user,$userid, $roleid)
+    public function user_role_delete(Request $request,User $user,$userid, $roleid)
     {
         $user = User::find($userid);
         $user->roles()->detach($roleid);

@@ -60,7 +60,9 @@
                                             <td>{{$row->name}}</td>
                                             <td>
                                                 <a href="{{route('admin_user_role_delete', ['userid' => $data->id, 'roleid'=>$row->id])}}"
-                                                   onclick="return !window.open(this.href, '','top=50 left=100 width=800, height=600')"></a>
+                                                   onclick="return !window.open(this.href, '','top=50 left=100 width=800, height=600')">
+                                                    <img src="{{asset('assets')}}/img/trash.png" alt="">
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -31,15 +31,33 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         $slider = Content::select('id', 'title', 'image')->limit(4)->get();
-        $announcement = Content::select('id', 'title', 'image', 'announcement')->limit(4)->inRandomOrder()->get();
-        $activity = Content::select('id', 'title', 'image', 'activity')->limit(4)->inRandomOrder()->get();
-        $news = Content::select('id', 'title','detail', 'image', 'news')->limit(4)->get();
+        $announcement = Content::select('id', 'title', 'image', 'announcement', 'created_at')->inRandomOrder()->get();
+        $liste=collect([]);
+        foreach ($announcement as $item) {
+            if ($item->announcement!=""){
+                $liste->add($item);
+            }
+        }
+        $activity = Content::select('id', 'title', 'image', 'activity')->get();
+        $liste2=collect([]);
+        foreach ($activity as $item) {
+            if ($item->activity!=""){
+                $liste2->add($item);
+            }
+        }
+        $news = Content::select('id', 'title','detail', 'image', 'news','created_at')->get();
+        $liste3=collect([]);
+        foreach ($news as $item) {
+            if ($item->news!=""){
+                $liste3->add($item);
+            }
+        }
 
         $data = ['setting' => $setting,
             'slider' => $slider,
-            'announcement' => $announcement,
-            'activity' => $activity,
-            'news' => $news];
+            'announcement' => $liste,
+            'activity' => $liste2,
+            'news' => $liste3];
 
         return view('home.index', $data);
     }
@@ -110,7 +128,14 @@ class HomeController extends Controller
     {
         $datalist = Content::where('menu_id', $id)->get();
         $data = Menu::find($id);
-        return view('home.menu_content', ['data' => $data, 'datalist' => $datalist]);
+        $activity = Content::select('id', 'title', 'image', 'activity')->get();
+        $liste2=collect([]);
+        foreach ($activity as $item) {
+            if ($item->activity!=""){
+                $liste2->add($item);
+            }
+        }
+        return view('home.menu_content', ['data' => $data, 'datalist' => $datalist, 'activities' =>$liste2]);
     }
 
 

@@ -39,68 +39,71 @@
                     <strong>Basic Form</strong> Elements
                 </div>
                 <div class="card-body card-block">
-                    <form action="{{route('admin_content_store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="{{route('admin_content_store')}}" method="post" enctype="multipart/form-data"
+                          class="form-horizontal">
                         @csrf {{--dışardan birinin bu formu post etmesini engeller--}}
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Parent</label></div>
+                            <div class="col col-md-3"><label class=" form-control-label">Parent</label></div>
                             <div class="col-12 col-md-9">
                                 <select name="menu_id" id="select" class="form-control">
                                     @foreach($datalist as $rs)
-                                        <option value="{{$rs->id}}">{{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title)}}</option>
+                                        <option
+                                            value="{{$rs->id}}">{{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title)}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Title</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="title" class="form-control"></div>
+                            <div class="col col-md-3"><label class=" form-control-label">Title</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="title"
+                                                                class="form-control"></div>
                         </div>
 
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Detail</label></div>
+                            <div class="col col-md-3"><label class=" form-control-label">Detail</label></div>
                             <div class="col-12 col-md-9"><input type="text" name="detail" class="form-control"></div>
                         </div>
 
 
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">News</label></div>
-                            <textarea id="news" name="news" ></textarea>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#news').summernote();
-                                });
-                            </script>
+                            <div class="col col-md-3"><label class=" form-control-label">News</label></div>
+                            <div class="col-md-9">
+                                <textarea id="news" name="news"></textarea>
+                                <script>
+                                    CKEDITOR.replace('news');
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">Announcement</label></div>
+                            <div class="col-md-9">
+                                <textarea id="announcement" name="announcement"></textarea>
+                                <script>
+                                    CKEDITOR.replace('announcement');
+                                </script>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">Activity</label></div>
+                            <div class="col-md-9">
+                                <textarea id="activity" name="activity"></textarea>
+                                <script>
+                                    CKEDITOR.replace('activity');
+                                </script>
+                            </div>
+
 
                         </div>
 
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Announcement</label></div>
-                            <textarea id="announcement" name="announcement" ></textarea>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#announcement').summernote();
-                                });
-                            </script>
-
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Activity</label></div>
-                            <textarea id="activity" name="activity"></textarea>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#activity').summernote();
-                                });
-                            </script>
-
+                            <div class="col col-md-3"><label class=" form-control-label">Image</label></div>
+                            <div class="col-12 col-md-9"><input type="file" id="text-input" name="image"
+                                                                class="form-control"></div>
                         </div>
 
                         <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Image</label></div>
-                            <div class="col-12 col-md-9"><input type="file" id="text-input" name="image" class="form-control"></div>
-                        </div>
-
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label  class=" form-control-label">Status</label></div>
+                            <div class="col col-md-3"><label class=" form-control-label">Status</label></div>
                             <div class="col-12 col-md-9">
                                 <select name="status" id="select" class="form-control">
                                     <option selected="selected">False</option>
@@ -131,7 +134,8 @@
         <script src="{{asset('assets')}}/admin/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="{{asset('assets')}}/admin/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
         <script src="{{asset('assets')}}/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-        <script src="{{asset('assets')}}/admin/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+        <script
+            src="{{asset('assets')}}/admin/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
         <script src="{{asset('assets')}}/admin/vendors/jszip/dist/jszip.min.js"></script>
         <script src="{{asset('assets')}}/admin/vendors/pdfmake/build/pdfmake.min.js"></script>
         <script src="{{asset('assets')}}/admin/vendors/pdfmake/build/vfs_fonts.js"></script>

@@ -73,13 +73,12 @@
 
                         <h4 class="comments-count">{{$countcomment}} Comments</h4>
                         @foreach($comments as $rs)
-
                         <div id="comment-1" class="comment clearfix">
                             <img src="{{asset('assets')}}/img/user.png" class="comment-img  float-left" alt="">
                             <h5><a href="">{{$rs->user->name}}</a> </h5>
                             <div style="display: flex; justify-content: space-between">
                                 <div>
-                                    <time datetime="2020-01-01">{{$rs->created_at}}</time>
+                                    <time datetime="2020-01-01">{{$rs->created_at->format('d/m/Y')}}</time>
                                 </div>
                               <div>
                                   @for ($i = $rs->rate; $i >= 1; $i--)

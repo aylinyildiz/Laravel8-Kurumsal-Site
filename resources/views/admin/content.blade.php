@@ -54,11 +54,11 @@
                                 <td>
                                     {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu, $rs->menu->title)}}
                                 </td>
-                                <td>{{$rs->title}}</td>
-                                <td>{{$rs->detail}}</td>
-                                <td>{{Str::limit($rs->news,50)}}</td>
-                                <td>{{Str::limit($rs->announcement,50)}}</td>
-                                <td>{{Str::limit($rs->activity,50)}}</td>
+                                <td>{{Str::limit($rs->title,30)}}</td>
+                                <td>{{Str::limit($rs->detail,30)}}</td>
+                                <td>{{Str::limit($rs->news,30)}}</td>
+                                <td>{{Str::limit($rs->announcement,30)}}</td>
+                                <td>{{Str::limit($rs->activity,30)}}</td>
                                 <td>
                                     @if ($rs->image)
                                     <img src="{{Storage::url($rs->image)}}" height="30" alt="">
