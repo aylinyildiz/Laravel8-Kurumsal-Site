@@ -8,44 +8,28 @@
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Linkler</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home')}}">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{route('aboutus')}}">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{route('references')}}">References</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home')}}">Anasayfa</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('aboutus')}}">Hakkımızda</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('references')}}">Referanslar</a></li>
             </ul>
           </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h4>İletişim</h4>
             <p>
                 {{$setting->address}}<br><br>
 
-              <strong>Phone:</strong> {{$setting->phone}}<br>
+              <strong>Telefon:</strong> {{$setting->phone}}<br>
                <strong>Fax:</strong> {{$setting->fax}}<br>
               <strong>Email:</strong> {{$setting->email}}<br>
             </p>
 
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-info">
-            <h3>About Moderna</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h3>Sosyal Medya</h3>
             <div class="social-links mt-3">
                 @if($setting->twitter!=null)
                     <a href="{{$setting->twitter}}" class="twitter" target="_blank"><i class="bx bxl-twitter" ></i></a>

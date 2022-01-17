@@ -36,13 +36,20 @@
                 @if($data->activity!=null)
                     {!! $data->activity !!}
                 @endif
+
+                            @foreach($datalist as $rs)
+                                <div class="mt-2">
+                                    <img src="{{Storage::url($rs->image)}}" alt="" style="width:60%">
+                                </div>
+                            @endforeach
+
+
             </div>
             <hr>
             <div class="row pb-4 ">
                 <p>
                     <small> <b> Eklenme Zamanı:</b> {{$data->created_at->format('d/m/Y')}}</small>
                 </p>
-
             </div>
 
         </div>

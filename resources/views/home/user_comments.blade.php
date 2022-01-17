@@ -19,10 +19,9 @@
 
 
     <section class="container" style="max-width: 2000px">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-11">
-                <table class="table table-striped">
+        <div class="row  mr-5 ml-5">
+            <div class="col-12">
+                <table class="table table-striped"  style="border: 1px solid gray">
                     <thead>
                     <tr>
                         <th>Id</th>
@@ -45,7 +44,7 @@
                             <td>{{$rs->comment}}</td>
                             <td>{{$rs->rate}}</td>
                             <td>{{$rs->status}}</td>
-                            <td>{{$rs->created_at}}</td>
+                            <td>{{$rs->created_at->format('d M Y')}}</td>
                             <td>
                                 <a href="{{route('admin_comment_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete ! are you sure?)')">
                                     <img src="{{asset('assets')}}/img/trash.png" alt="">

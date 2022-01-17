@@ -41,12 +41,12 @@
                                 $countcomment = \App\Http\Controllers\HomeController::countcomment($data->id);
                             @endphp
                             <div class="entry-meta">
-                                <ul>
+                                <ul style="display: flex;justify-content: space-between;">
                                     <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="">
-                                            <time datetime="2020-01-01">{{$rs->created_at}}</time>
+                                            <time datetime="2020-01-01">{{$rs->created_at->format('d/M/Y')}}</time>
                                         </a></li>
                                     <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a
-                                            href="">{{$countcomment}} Comments</a></li>
+                                            href="">{{$countcomment}} Yorum</a></li>
                                 </ul>
                             </div>
 
@@ -55,7 +55,7 @@
                                     {{$rs->detail}}
                                 </p>
                                 <div class="read-more">
-                                    <a href="{{route('contentdetail', ['id' => $rs->id])}}">Read More</a>
+                                    <a href="{{route('contentdetail', ['id' => $rs->id])}}">Devamı</a>
                                 </div>
                             </div>
 
@@ -77,28 +77,25 @@
 
                 <div class="col-lg-4">
                     <div class="sidebar">
+                        <div class="row mb-2">
+                            <div class="col-md-2">
+                                <img src="{{asset('assets')}}/img/takvim.png" alt="">
+                            </div>
+                            <div class="col-md-9">
+                                <h3 class="sidebar-title">Etkinlikler</h3>
+                            </div>
+                        </div>
+                        <hr>
 
-                        <h3 class="sidebar-title">Search</h3>
-                        <div class="sidebar-item search-form">
-                            <form action="">
-                                <input type="text">
-                                <button type="submit"><i class="icofont-search"></i></button>
-                            </form>
-                        </div><!-- End sidebar search formn-->
 
-
-
-                        <h3 class="sidebar-title">Duyurular</h3>
                         <div class="sidebar-item recent-posts">
                             @foreach($activities as $rs)
                                 <div class="post-item clearfix">
-                                    <img src="{{asset('assets')}}/img/calendar1.png" alt="">
-                                    <h4><a href="{{route('contentdetail', ['id' => $rs->id])}}">{{$rs->title}}</a></h4>
-                                    <time datetime="2020-01-01">{{$rs->created_at}}</time>
+                                    <img src="{{asset('assets')}}/img/schedule.png" alt="">
+
+                                    <h6><a href="{{route('contentdetail', ['id' => $rs->id])}}">{{$rs->title}}</a></h6>
                                 </div>
                             @endforeach
-
-
                         </div><!-- End sidebar recent posts-->
 
                     </div><!-- End sidebar -->

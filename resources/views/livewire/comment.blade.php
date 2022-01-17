@@ -10,14 +10,14 @@
         @csrf
         <div class="row">
             <div class="col form-group">
-                <textarea wire:model="comment" class="form-control" placeholder="Your Comment"></textarea>
+                <textarea wire:model="comment" class="form-control" placeholder="Yorumunuz..."></textarea>
                 @error('comment') <span class="text-danger">{{$message}}</span>@enderror
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 form-group">
                 @error('rate') <span class="text-danger">{{$message}}</span>@enderror
-                <strong class="text-uppercase">Your Rating: </strong>
+
 
                 <div class="rating">
                     <input type="radio" wire:model="rate" value="5" id="5"><label for="5">☆</label>
@@ -30,9 +30,9 @@
         </div>
 
         @auth
-            <input type="submit" class="btn btn-primary" value="Save"/>
+            <input type="submit" class="btn btn-primary" value="Kaydet"/>
         @else
-            <a href="/login" class="btn-primary">For submit your commit. Please login</a>
+            <a href="/login" class="btn-primary">Yorum Yapabilmek İçin Lütfen Giriş Yapın.</a>
         @endauth
     </form>
 </div>

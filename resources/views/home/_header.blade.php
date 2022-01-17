@@ -39,21 +39,23 @@
                         <li><a href="{{route('myaccount')}}">Hesabım</a></li>
                         <li><a href="{{route('mycomments')}}">Yorumlarım</a></li>
                         <li><a href="{{route('user_contents')}}">İçeriklerim</a></li>
+
                         @php
                             $userRoles = Auth::user()->roles->pluck('name');
                         @endphp
-                        @if (!$userRoles->contains('admin')){
+                        @if ($userRoles->contains('admin'))
                         <li><a href="{{route('admin_home')}}" target="_blank">Admin Panel</a></li>
                         @endif
-                        <li><a href="{{route('logout')}}">Logout</a></li>
+
+                        <li><a href="{{route('logout')}}">Çıkış</a></li>
                     </ul>
                 </li>
             @endauth
             @guest
                 <li class="drop-down"><a href="#">Giriş</a>
                     <ul>
-                        <li><a href="{{route('login')}}">Login</a></li>
-                        <li><a href="{{route('register')}}">Register</a></li>
+                        <li><a href="{{route('login')}}">Giriş</a></li>
+                        <li><a href="{{route('register')}}">Kayıt Ol</a></li>
                     </ul>
                 </li>
             @endguest
@@ -61,7 +63,7 @@
                 <form action="{{route('getcontent')}}" method="post" class="d-flex ml-3">
                     @csrf
                     @livewire('search')
-                    <button type="submit" class="btn" style="background-color: #29566B; color: white;  ">Search</button>
+                    <button type="submit" class="btn" style="background-color: #29566B; color: white;  "> A  r a </button>
                 </form>
 
                     @livewireScripts

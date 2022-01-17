@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        $slider = Content::select('id', 'title', 'image')->limit(4)->get();
+        $slider = Content::select('id', 'title', 'image')->limit(3)->get();
         $announcement = Content::select('id', 'title', 'image', 'announcement', 'created_at')->inRandomOrder()->get();
         $liste=collect([]);
         foreach ($announcement as $item) {
@@ -38,7 +38,7 @@ class HomeController extends Controller
                 $liste->add($item);
             }
         }
-        $activity = Content::select('id', 'title', 'image', 'activity')->get();
+        $activity = Content::select('id', 'title', 'image', 'activity','created_at')->get();
         $liste2=collect([]);
         foreach ($activity as $item) {
             if ($item->activity!=""){
@@ -67,7 +67,14 @@ class HomeController extends Controller
         $data = Content::find($id);
         $datalist = Image::where('content_id', $id)->get();
         $comments = Comment::where('content_id', $id)->get();
-        return view('home.content_detail', ['data' => $data, 'datalist' => $datalist, 'comments' => $comments]);
+        $activity = Content::select('id', 'title', 'image', 'activity', 'created_at')->get();
+        $liste2=collect([]);
+        foreach ($activity as $item) {
+            if ($item->activity!=""){
+                $liste2->add($item);
+            }
+        }
+        return view('home.content_detail', ['data' => $data, 'datalist' => $datalist, 'comments' => $comments, 'activities' =>$liste2]);
     }
 
     public function homedetail($id)
@@ -95,7 +102,14 @@ class HomeController extends Controller
         $data = Content::find($id);
         $datalist = Image::where('content_id', $id)->get();
         $comments = Comment::where('content_id', $id)->get();
-        return view('home.content_detail', ['data' => $data, 'datalist' => $datalist, 'comments' => $comments]);
+        $activity = Content::select('id', 'title', 'image', 'activity', 'created_at')->get();
+        $liste2=collect([]);
+        foreach ($activity as $item) {
+            if ($item->activity!=""){
+                $liste2->add($item);
+            }
+        }
+        return view('home.content_detail', ['data' => $data, 'datalist' => $datalist, 'comments' => $comments, 'activities'=>$liste2]);
     }
 
 
@@ -114,7 +128,14 @@ class HomeController extends Controller
     public function contentlist($search)
     {
         $datalist = Content::where('title', 'like', '%' . $search . '%')->get();
-        return view('home.search_content', ['search' => $search, 'datalist' => $datalist]);
+        $activity = Content::select('id', 'title', 'image', 'activity', 'created_at')->get();
+        $liste2=collect([]);
+        foreach ($activity as $item) {
+            if ($item->activity!=""){
+                $liste2->add($item);
+            }
+        }
+        return view('home.search_content', ['search' => $search, 'datalist' => $datalist, 'activities'=>$liste2]);
     }
 
 
@@ -128,7 +149,7 @@ class HomeController extends Controller
     {
         $datalist = Content::where('menu_id', $id)->get();
         $data = Menu::find($id);
-        $activity = Content::select('id', 'title', 'image', 'activity')->get();
+        $activity = Content::select('id', 'title', 'image', 'activity', 'created_at')->get();
         $liste2=collect([]);
         foreach ($activity as $item) {
             if ($item->activity!=""){

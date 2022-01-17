@@ -47,40 +47,6 @@
         </div>
     </section><!-- End Why Us Section -->
 
-
-    <section class="why-us section-bg">
-        <div class="section-title">
-            <h2>Etkinlikler</h2>
-        </div>
-        <div class="container p-5">
-            <div class="row">
-                {{--<div class="col-lg-6 video-box">
-                    <img src="{{Storage::url( $news->first()->image)}}" class="img-fluid" alt="">
-                </div>--}}
-                @foreach($activity as $rs)
-                    <div class="col-lg-6 d-flex flex-column justify-content-center">
-                        <div class="icon-box">
-                            <a class="text-decoration-none text-black-50"
-                               href="{{route('homedetail', ['id'=>$rs->id])}}">
-                                <div
-                                    class="row">{{--<img src="{{Storage::url( $rs->image)}}" class="img-fluid" alt="">--}}
-                                    <div class="col-md-2">
-                                        <img src="{{asset('assets')}}/img/calendar.png" alt="">
-                                    </div>
-                                    <div class="col-md-9">
-                                        <h6>{{$rs->title}}</h6>
-                                        <hr>
-                                    </div>
-                                </div>
-                                {{--   <p class="description">{{$rs->detail}}</p>--}}
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section><!-- End Why Us Section -->
-
     <!-- ======= Tetstimonials Section ======= -->
     <section class="services">
         <div class="">
@@ -111,6 +77,42 @@
             </div>
         </div>
     </section>
+
+
+
+    <section class="why-us section-bg">
+        <div class="section-title">
+            <h2>Etkinlikler</h2>
+        </div>
+        <div class="container p-5 mb-5">
+            <div class="row">
+                {{--<div class="col-lg-6 video-box">
+                    <img src="{{Storage::url( $news->first()->image)}}" class="img-fluid" alt="">
+                </div>--}}
+                @foreach($activity as $rs)
+                    <div class="col-lg-6 d-flex flex-column justify-content-center">
+                        <div class="icon-box">
+                            <a class="text-decoration-none text-black-50"
+                               href="{{route('homedetail', ['id'=>$rs->id])}}">
+                                <div
+                                    class="row">{{--<img src="{{Storage::url( $rs->image)}}" class="img-fluid" alt="">--}}
+                                    <div class="col-md-2">
+                                        <img src="{{asset('assets')}}/img/calendar.png" alt="">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h6>{{$rs->title}}</h6>
+                                        <hr>
+                                    </div>
+                                </div>
+                                {{--   <p class="description">{{$rs->detail}}</p>--}}
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section><!-- End Why Us Section -->
+
 
 
 
